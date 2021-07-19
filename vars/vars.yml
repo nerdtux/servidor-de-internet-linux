@@ -1,0 +1,8 @@
+---
+nic_internet_one=
+nic_local=
+nic_internet_two=
+
+# Netplan files
+netplan_local=files/00-installer-config.yaml
+netplan_target=/etc/netplan/00-instaler-config.yaml

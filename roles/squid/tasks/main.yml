@@ -1,0 +1,24 @@
+---
+- name: Configurar Servidor de Internet Linux
+  hosts: all
+
+  tasks:
+    - name: Atualiza Lista de repositórios e sistema
+      apt:
+        squid
+        redir
+
+    - name: Copia arquivos de configuração
+      copy: 
+        src: "{{ item.src }}"
+        dest: "{{ item.dest }}"
+        owner: root
+        group: root
+        mode: 0644
+      with_items:
+        - src: 00-installer-config.yaml
+          dest: /etc/netplan/00-installer-config.yaml
+        - src: redir
+          dest: ~/redir.sh
+        - src: squid.conf
+          dest: /etc/squid/squid.conf

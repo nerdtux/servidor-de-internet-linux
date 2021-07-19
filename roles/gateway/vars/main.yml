@@ -1,0 +1,6 @@
+---
+netplan_local=files/netplan
+netplan_target=/etc/netplan/01-ansible.yaml
+
+ip_forwarding_local=files/sysctl.conf
+ip_forwarding_target=/etc/sysctl.conf

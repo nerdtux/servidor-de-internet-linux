@@ -1,0 +1,29 @@
+---
+- name: Copy Netplan file with fist NIC configuration
+  copy:
+    src: "{{ netplan_local }}"
+    dest: "{{ netplan_target }}"
+    owner: root
+    group: root
+    mode: '0644'
+    backup: true
+
+- name: Commands netplan generate and netplan apply
+  command: >
+    netplan generate
+    netplan apply
+
+- name: Configuring sysctl.conf
+  copy:
+    src: "{{ ip_forwarding_local }}"
+    dest: "{{ ip_forward_target }}" 
+    owner: root
+    group: root
+    mode: '0644'
+    backup: true
+
+- name: Enable IP Forwarding
+  shell: >
+    sysctl -p /etc/sysctl.conf      
+
+- name: Run Iptables Script    
