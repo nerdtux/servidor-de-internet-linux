@@ -34,7 +34,7 @@ Caso não queira utilizar senha para conectar via ssh e, ao invés disso, quiser
 
 Digite a senha e pronto, nas próximas sessões SSH a senha não será mais solicitada
 
-# Passo 3 - Criar Um Invetário de Máquinas Que Precisamos Aplicar Playbook do Ansible
+# Passo 3 - Criar Um Invetário com os ips e/ou nomes.domínio das Máquinas Alvo
 Crie um diretório que será seu "ambiente" Ansible
 
 `mkdir ~/empresa/ansible`
