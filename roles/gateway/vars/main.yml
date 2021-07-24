@@ -1,6 +1,8 @@
 ---
-netplan_local=files/netplan
-netplan_target=/etc/netplan/01-ansible.yaml
+netplan_local: router.yaml
+netplan_target: 00-installer-config.yaml
+tabela_1: vivo
+tabela_2: net
+default_dir: /internet
+arq_redir: redir.sh
 
-ip_forwarding_local=files/sysctl.conf
-ip_forwarding_target=/etc/sysctl.conf

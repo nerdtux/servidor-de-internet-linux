@@ -3,17 +3,13 @@
   hosts: all
   become: true
 
-  var_files:
-    vars/vars.yml
+  vars_files:
+    - vars/main.yml
 
   pre_tasks:
     - name: Atualizar apt cache
       package: update_cache=true cache_valid_time=3600
-  
+
   roles:
-    - gateway    
-
-  tasks:
-    - import_tasks: tasks/squid.yml
-    - import_tasks: load_balancer.yml
-
+    - gateway
+    - squid
