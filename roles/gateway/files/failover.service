@@ -1,0 +1,12 @@
+[Unit]
+Description=Firewall+failover
+ 
+[Service]
+Type=simple
+RemainAfterExit=yes
+ExecStart=/internet/failover.sh start
+ExecStop=/internet/failover.sh stop
+ExecReload=/internet/failover.sh restart
+ 
+[Install]
+WantedBy=multi-user.target

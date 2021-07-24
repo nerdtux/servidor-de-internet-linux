@@ -1,6 +1,9 @@
 ---
 # tasks file for squid
 
+- name: Atualizar apt cache
+  package: update_cache=true cache_valid_time=3600
+
 - name: Instalar Squid
   ansible.builtin.package:
     name: squid

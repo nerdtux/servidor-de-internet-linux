@@ -1,6 +1,6 @@
 [ubuntu]
-ip_da_maquina_a_ser_configurada
+192.168.0.1
 
 [ubuntu:vars]
-ansible_user=usuário_ssh
-ansible_ssh_private_key_file=path/arquivo_chave-ssh
+ansible_user=usuario
+ansible_ssh_private_key_file=path_chave_ssh

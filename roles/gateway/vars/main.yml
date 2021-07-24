@@ -5,4 +5,7 @@ tabela_1: vivo
 tabela_2: net
 default_dir: /internet
 arq_redir: redir.sh
-
+balanceamento: balanceamento.sh
+failover: failover.sh
+failover_systemd: failover.service
+path_systemd: /lib/systemd/system/

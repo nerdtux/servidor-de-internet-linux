@@ -1,7 +1,14 @@
 #!/bin/bash
+### BEGIN INIT INFO
+# Provides:          rr-firewall
+# Required-Start:    $all
+# Required-Stop:
+# Default-Start:     2 3 4 5
+# Default-Stop:
+### END INIT INFO
 
 # Adicionar no rc.local 
-nohup > /dev/null /internet/failover.sh &
+# nohup > /dev/null /internet/failover.sh &
 
 # Tempo esperado para testar a conexão novamente
 tempo_espera=30
@@ -10,12 +17,12 @@ tempo_espera=30
 numero_pacotes=2
 
 # Nome das interfaces de rede conectadas com a internet
-isp_1=eth0
-isp_2=eth1
+isp_1=interface_rede1
+isp_2=interface_rede2
 
 # Gateway das interfaces
-gateway_1=192.168.0.1
-gateway_2=192.168.1.1
+gateway_1=0.0.0.0
+gateway_2=0.0.0.0
 
 # Endereço IP a ser pingado (8.8.8.8 é o DNS do Google)
 endereco_ping=8.8.8.8
@@ -30,6 +37,7 @@ link1=1
 link2=1
 
 # Ativação do Balanceamento de Links
+function iniciar(){
 sh $arquivo > /dev/null
 
 while [ $i -le 10 ];
@@ -62,3 +70,16 @@ fi
 sleep $tempo_espera
 
 done 
+}
+
+function parar(){
+	iptables -F
+	iptables -F -t nat
+}
+
+case "$1" in
+	"start") iniciar ;;
+	"stop") parar ;;
+	"restart") parar; iniciar ;;
+	*) echo "Use os parâmetros start ou stop"
+esac

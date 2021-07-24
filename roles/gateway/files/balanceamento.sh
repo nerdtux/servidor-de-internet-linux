@@ -1,18 +1,18 @@
 # Dados da interfaces de rede conectadas com a internet - Link 1
-isp_1=eth0
-tabela_1=nome_tabela_1
-gateway_1=192.168.0.1
-peso_isp_1=30
+isp_1=          # Interface de rede1
+tabela_1=       # Tabela igual tabela_1 ao arquivo main.yml
+gateway_1=      # Gateway para acesso ao provedor
+peso_isp_1=     # A soma tem que dar 100
 
 # Dados da interfaces de rede conectadas com a internet - Link 2
-isp_2=eth1
-tabela_2=nome_tabela_2
-gateway_2=192.168.1.1
-peso_isp_2=70
+isp_2=          # Interface de rede2
+tabela_2=       # Tabela igual tabela_2 do arquivo main.yaml
+gateway_2=      # Gateway para acesso ao provedor
+peso_isp_2=     # A soma tem que dar 100
 
 # Dados da Rede Interna
-placa_rede_interna=eth2
-rede_interna=10.0.0.0/24
+placa_rede_interna=
+rede_interna=0.0.0.0
 
 
 # Deletar a rota default

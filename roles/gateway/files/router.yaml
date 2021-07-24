@@ -1,22 +1,23 @@
 network:
+    version: 2
+    renderer: networkd
     ethernets:
-        enp3s0:
-            addresses:
-                - 10.10.10.2/24
-            gateway4: 
-            nameservers:
-                addresses: [10.10.10.1, 1.1.1.1]
         enp6s0:
             addresses:
-                - 192.168.0.4
-            gateway:
+                - 192.168.1.10/24
+            nameservers:
+                addresses: [8.8.8.8]
+        
+        enp4s0:
+            addresses:    
+                - 192.168.3.10/24
             nameservers:
                 addresses: [8.8.8.8, 8.8.4.4]
-        enp8s0:
+        
+        
+        enp35s0f1:
             addresses:
-                - 192.168.0.4
-            gateway: 
+                - 192.168.0.1/24
             nameservers:
-                addresses: [8.8.8.8, 8.8.4.4]
+                addresses: [8.8.8.8]
                 
-    version: 2

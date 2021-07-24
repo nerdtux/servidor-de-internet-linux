@@ -90,21 +90,15 @@
     dest: "{{ default_dir }}/{{ item.dest }}"
     owner: root
     group: root
-    mode: 0755
+    mode: 0644
   loop:
     - src: "{{ balanceamento }}"
       dest: "{{ balanceamento }}"
     - src: "{{ failover }}" 
       dest: "{{ failover }}"
 
-- name: Cria link do failover.sh no /etc/init.d
-  ansible.builtin.file:
-    src: "{{ default_dir }}/{{ failover }}"
-    dest: "/etc/init.d/{{ failover }}"
-    owner: root
-    group: root
-    mode: 0755
-    state: link
+- name: Run Iptables Script   
+  shell: sh /internet/failover.sh
 
 - name: Copiar /lib/systemd/system/failover.service
   copy:
@@ -125,8 +119,8 @@
     enabled: true
 
 - name: Copia redir.sh
-  copy:
-    src: "files/{{ arq_redir }}"
+  ansible.builtin.file:
+    src: "file/{{ arq_redir }}"
     dest: "{{ default_dir }}/{{ arq_redir }}"
     owner: root
     group: root

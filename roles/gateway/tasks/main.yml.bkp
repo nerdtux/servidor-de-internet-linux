@@ -12,7 +12,6 @@
   command: >
     netplan generate
     netplan apply
-  become: true
 
 - name: Garantir presença de iproute2 e iptables
   ansible.builtin.package:
@@ -24,12 +23,12 @@
 - name: Adiciona tabela_1  ao arquivo /etc/iproute2/rt_tables
   ansible.builtin.lineinfile:
     path: /etc/iproute2/rt_tables
-    line: 200 {{ tabela_1 }}
+    line: 200 "{{ tabela_1 }}"
 
 - name: Adiciona tabela tabela_2 ao arquivo /etc/iproute2/rt_tables
   ansible.builtin.lineinfile:
     path: /etc/iproute2/rt_tables
-    line: 201 {{ tabela_2 }}
+    line: 201 "{{ tabela_2 }}"
 
 - name: Carrega módulo iptable_nat
   community.general.modprobe:
@@ -85,48 +84,31 @@
     mode: '0755'
 
 - name: Copiar balanceamento.sh e failover.sh
-  copy:
+  ansible.builtin.file:
     src: "files/{{ item.src }}"
     dest: "{{ default_dir }}/{{ item.dest }}"
     owner: root
     group: root
-    mode: 0755
-  loop:
-    - src: "{{ balanceamento }}"
-      dest: "{{ balanceamento }}"
-    - src: "{{ failover }}" 
-      dest: "{{ failover }}"
-
-- name: Cria link do failover.sh no /etc/init.d
-  ansible.builtin.file:
-    src: "{{ default_dir }}/{{ failover }}"
-    dest: "/etc/init.d/{{ failover }}"
-    owner: root
-    group: root
-    mode: 0755
-    state: link
-
-- name: Copiar /lib/systemd/system/failover.service
-  copy:
-    src: "files/{{ failover_systemd }}"
-    dest: "{{ path_systemd }}/{{ failover_systemd }}"
-    owner: root
-    group: root
     mode: 0644
+  with_items:
+    - src: balanceamento.sh
+      dest: balanceamento.sh 
+    - src: failover.sh
+      dest: failover.sh     
 
-- name: Reload Systemd
-  ansible.builtin.systemd:
-    daemon_reload: yes
 
-- name: Habilita failover.service
-  ansible.builtin.systemd:
-    name: "{{ failover_systemd }}"
-    state: started
-    enabled: true
+- name: Run Iptables Script   
+  command: nohup > /dev/null /internet/failover.sh &
+
+- name: Adiciona Iptables Script ao rc.local
+  ansible.builtin.lineinfile:
+    path: /etc/rc.local
+    insertbefore: '^exit 0'
+    line: 'nohup > /dev/null /internet/failover.sh &'
 
 - name: Copia redir.sh
-  copy:
-    src: "files/{{ arq_redir }}"
+  ansible.builtin.file:
+    src: "file/{{ arq_redir }}"
     dest: "{{ default_dir }}/{{ arq_redir }}"
     owner: root
     group: root
