@@ -1,0 +1,31 @@
+- Arquivo balanceamento.sh
+    Preencher as variáveis
+    Preencher regras de iptables conforme necessidade
+
+- Arquivo router.yaml
+    Preencher interfaces de rede
+    Preencher endereço de ip
+    preencher endereço de dns
+
+- Arquivo failover.sh
+    Preencher enterface de rede em isp_1 e isp_2
+    Preencher endereços de ip gateway_1 e gateway2
+
+- Arquivo redir.sh
+    Preencher redirecionamentos de porta
+
+- Arquivo main.yml no diretório vars da role
+    Caso queira alterar, precisa buscar dependências em outros arquivo
+
+- Editar inventory
+
+- Usar ansible-playbook -K
+
+- Instalar sshpass
+
+- Falta criar idempodência para `netplan generate` e `netplan apply`
+
+- Falta colocar regras redir.sh dentro do failover.sh
+
+
+
