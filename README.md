@@ -1,6 +1,6 @@
-# Servidor de Internet Linux
+# Servidor de Internet Linux com Load Balancer e Failover
 
-Automatizar a configuração de um servidor de internet Linux (gateway, firewall, load-balancer, proxy, dhcp) 
+Automatizar a configuração de um servidor de internet Linux (gateway, firewall, load-balancer) 
 
 ![alt text](images/project.png)
 
