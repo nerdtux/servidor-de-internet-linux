@@ -1,6 +1,6 @@
 # Servidor de Internet Linux com Load Balancer e Failover
 
-Automatizar a configuração de um servidor de internet Linux (gateway, firewall, load-balancer) 
+Automatizar a configuração de um servidor de internet Linux (gateway, firewall, load-balancer, failover e Proxy Squid) 
 
 ![alt text](images/project.png)
 
