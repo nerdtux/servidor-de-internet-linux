@@ -1,3 +1,6 @@
+# Editar com as informações do provedor de internet em suas respectivas interfaces de rede
+# Não preencher gateway4
+
 network:
     version: 2
     renderer: networkd
