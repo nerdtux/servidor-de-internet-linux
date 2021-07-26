@@ -1,14 +1,11 @@
 #!/bin/bash
 ### BEGIN INIT INFO
-# Provides:          rr-firewall
+# Provides:          failover.sh
 # Required-Start:    $all
 # Required-Stop:
 # Default-Start:     2 3 4 5
 # Default-Stop:
 ### END INIT INFO
-
-# Adicionar no rc.local 
-# nohup > /dev/null /internet/failover.sh &
 
 # Tempo esperado para testar a conexão novamente
 tempo_espera=30
