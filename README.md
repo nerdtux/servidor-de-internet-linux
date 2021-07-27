@@ -2,7 +2,7 @@
 
 Automatizar a configuração de um servidor de internet Linux (gateway, firewall, load-balancer, failover e Proxy Squid) 
 
-![alt text](images/project.png)
+![alt text](images1/project.png)
 
 # Passo 1 - Dependências
 
