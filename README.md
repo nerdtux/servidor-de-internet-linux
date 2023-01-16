@@ -33,9 +33,6 @@ Automatizar a configuração de um servidor de internet Linux (gateway, firewall
 
 - Arquivo roles/gateway/files/redir.sh \
     Preencher redirecionamentos de porta 
-    
-    ![image](https://user-images.githubusercontent.com/84750652/212575102-24acfb63-72e5-456a-89a3-5e383e50e64a.png)
-
 
 - Arquivo roles/gateway/vars/main.yml \
     Caso queira alterar, precisa buscar dependências em outros arquivos 
